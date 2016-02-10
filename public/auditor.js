@@ -129,6 +129,7 @@ var Auditor = {}
             contentpage: 'https://byui.brightspace.com' + escape(page.url),
             errors: errors
           })
+          callback(totalErrors) // concept: update as content is found
         }
 
         responded++

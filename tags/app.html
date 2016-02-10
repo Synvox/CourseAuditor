@@ -1,12 +1,12 @@
 <app>
 
-  <div each={entry in this.audit}>
+  <div class="entry" each={entry in this.audit}>
     <h2>{entry.title}</h2>
     <a href={entry.brightspace} target="_blank">Brightspace</a>
     <a href={entry.contentpage} target="_blank">Content Page</a>
-    <ul>
-      <li each={name, count in entry.errors}><strong>{count}</strong> {name}</li>
-    </ul>
+    <div class="errors">
+      <span class="error" each={name, count in entry.errors}><strong>{count}</strong> {name}</span>
+    </div>
   </div>
 
   <script>
@@ -14,12 +14,31 @@
         errors = []
 
     Auditor.checkCourse(courseId, (audit)=>{
-      this.update({audit})
+      this.update({ audit })
     })
   </script>
 
   <style type="less">
-
+    app {
+      .entry {
+        &:not(:first-child) {
+          border-top: 1px solid #ccc;
+        }
+        .errors {
+          @color: #f5ff6a;
+          border-radius: 3px;
+          border: 1px solid darken(@color);
+          background: @color;
+          padding: 8px 20px;
+          .error {
+            border-right: 1px solid darken(@color);
+            &:last-child {
+              border-right: 0px
+            }
+          }
+        }
+      }
+    }
   </style>
 
 </app>
