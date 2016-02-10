@@ -4,8 +4,24 @@
 
   <div if={this.audit}>
     <h1>Score: {this.analysis.points}</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Total Pages</th>
+          <th>Broken Links</th>
+          <th>Saturdays</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{this.analysis.totalPages}</td>
+          <td>{this.analysis.brokenLinks}</td>
+          <td>{this.analysis.saturdays}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
+  
   <entry each={entry in this.audit} data={entry}/>
 
   <script>
