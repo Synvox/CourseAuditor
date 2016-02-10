@@ -1,0 +1,7 @@
+{
+  "maxcomplexity": 5,
+  "esnext": true,
+  "asi": true,
+  "jquery": true,
+  "devel": false
+}
