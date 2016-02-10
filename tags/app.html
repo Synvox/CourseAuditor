@@ -25,16 +25,11 @@
           border-top: 1px solid #ccc;
         }
         .errors {
-          @color: #f5ff6a;
           border-radius: 3px;
-          border: 1px solid darken(@color);
-          background: @color;
+          box-shadow: 0px 0px 0px 1px rgba(0,0,0,.1) inset;
+          background: #f5ff6a;
           padding: 8px 20px;
           .error {
-            border-right: 1px solid darken(@color);
-            &:last-child {
-              border-right: 0px
-            }
           }
         }
       }
