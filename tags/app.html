@@ -2,7 +2,7 @@
 
   <form onsubmit={ search }>
     <input type="text" name="input" value={ courseId }/>
-    <button>Submit</button>
+    <button name="button">Submit</button>
   </form>
 
   <div if={this.audit} class="scoreboard">
@@ -34,8 +34,10 @@
     this.analysis = null
 
     this.search = () => {
+      this.button.innerHTML = "Loading..."
       Auditor.checkCourse(this.input.value, (audit, analysis)=>{
         this.update({ audit, analysis })
+        this.button.innerHTML = "Submit"
       })
     }
 
@@ -47,6 +49,12 @@
       background: white;
       .scoreboard {
         text-align: center;
+        h1,table {
+          margin: auto;
+        }
+        h1 {
+          font-size: 40px;
+        }
       }
     }
 
