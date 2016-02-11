@@ -283,6 +283,7 @@ var Auditor = {}
              ele.attr('data-src').indexOf('brainhoney') >= 0
     })
     .add('Bad Image Widths',2,'img',function(ele){
+      // if filename contains 'banner' just skip it, theres css controlling the width
       if (!ele.attr('width'))
         return true
 
