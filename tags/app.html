@@ -5,7 +5,7 @@
     <button>Submit</button>
   </form>
 
-  <div if={this.audit}>
+  <div if={this.audit} class="scoreboard">
     <h1>Score: {this.analysis.points}</h1>
     <table>
       <thead>
@@ -42,6 +42,14 @@
   </script>
 
   <style type="less">
+
+    app {
+      background: white;
+      .scoreboard {
+        text-align: center;
+      }
+    }
+
   </style>
 
 </app>

@@ -1,5 +1,5 @@
 <entry onclick={ open }>
-  <div>{entry.title}</div>
+  <div class="title">{entry.title}</div>
 
   <div class="meta">
     <a href={entry.brightspace} target="_blank">View in Brightspace</a>
@@ -24,14 +24,17 @@
 
   <style type="less">
     entry {
+      display: block;
+      padding: 8px 20px;
       &:hover {
-        background: rgba(0,0,0,.2);
+        background: rgba(0,0,0,.05);
       }
-      h2 {
+      .title {
         margin-bottom: 10px;
         font-weight: normal;
         font-size: 1.5rem;
         padding: 0px 20px;
+        font-weight: bold;
       }
       &:not(:first-child) {
         border-top: 1px solid #ccc;
