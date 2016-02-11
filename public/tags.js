@@ -1,14 +1,17 @@
 'use strict';
 
-riot.tag2('app', '<div if="{!this.audit}">Loading... hold on...</div> <div if="{this.audit}"> <h1>Score: {this.analysis.points}</h1> <table> <thead> <tr> <th>Total Pages</th> <th>Broken Links</th> <th>Saturdays</th> </tr> </thead> <tbody> <tr> <td>{this.analysis.totalPages}</td> <td>{this.analysis.brokenLinks}</td> <td>{this.analysis.saturdays}</td> </tr> </tbody> </table> </div> <entry each="{entry in this.audit}" data="{entry}"></entry>', '', '', function (opts) {
+riot.tag2('app', '<form onsubmit="{search}"> <input type="text" name="input"> <button>Submit></submit> </form> <div if="{this.audit}"> <h1>Score: {this.analysis.points}</h1> <table> <thead> <tr> <th>Total Pages</th> <th>Broken Links</th> <th>Saturdays</th> </tr> </thead> <tbody> <tr> <td>{this.analysis.totalPages}</td> <td>{this.analysis.brokenLinks}</td> <td>{this.analysis.saturdays}</td> </tr> </tbody> </table> </div> <entry each="{entry in this.audit}" data="{entry}"></entry>', '', '', function (opts) {
   var _this = this;
 
-  var courseId = Number(window.location.href.split('/')[5].split('-')[0]),
-      errors = [];
+  this.courseId = Number(window.location.href.split('/')[5].split('-')[0]);
+  this.audit = null;
+  this.analysis = null;
 
-  Auditor.checkCourse(courseId, function (audit, analysis) {
-    _this.update({ audit: audit, analysis: analysis });
-  });
+  this.search = function () {
+    Auditor.checkCourse(_this.input.value, function (audit, analysis) {
+      _this.update({ audit: audit, analysis: analysis });
+    });
+  };
 }, '{ }');
 'use strict';
 

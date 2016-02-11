@@ -1,6 +1,9 @@
 <app>
 
-  <div if={!this.audit}>Loading... hold on...</div>
+  <form onsubmit={ search }>
+    <input type="text" name="input"/>
+    <button>Submit></submit>
+  </form>
 
   <div if={this.audit}>
     <h1>Score: {this.analysis.points}</h1>
@@ -21,17 +24,20 @@
       </tbody>
     </table>
   </div>
-  
+
   <entry each={entry in this.audit} data={entry}/>
 
   <script>
 
-    var courseId = Number(window.location.href.split('/')[5].split('-')[0]),
-        errors = []
+    this.courseId = Number(window.location.href.split('/')[5].split('-')[0])
+    this.audit = null
+    this.analysis = null
 
-    Auditor.checkCourse(courseId, (audit, analysis)=>{
-      this.update({ audit, analysis })
-    })
+    this.search = () => {
+      Auditor.checkCourse(this.input.value, (audit, analysis)=>{
+        this.update({ audit, analysis })
+      })
+    }
 
   </script>
 
