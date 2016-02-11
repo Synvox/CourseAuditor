@@ -3,7 +3,7 @@
 
   <div class="meta">
     <a href={entry.brightspace} target="_blank">View in Brightspace</a>
-    <a href={entry.contentpage} target="_blank">Goto Content Page</a>
+    <a href={entry.contentpage} target="_blank">View Content Page</a>
     <div class="errors">
       <span class="error" each={name, obj in entry.errors}><strong>{obj.count}</strong> {name}</span>
     </div>
@@ -27,8 +27,10 @@
       display: block;
       padding: 8px 20px;
       background: white;
+      margin: 10px 20px;
+      cursor: pointer;
       &:hover:not(.open) {
-        background: rgba(0,0,0,.01);
+        background: rgba(0,0,0,.03);
       }
       .title {
         margin-bottom: 10px;
